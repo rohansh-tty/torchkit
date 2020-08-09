@@ -5,11 +5,11 @@
 
 **torchkit** currently supports the following features
 
-   Model architectures
+   ## Model architectures
 
          * ResNet(18, 34)
 
-   Model utilities
+   ## Model utilities
 
      Loss functions
 
@@ -41,10 +41,10 @@
      Model Checkpointing
 
 
-   Model training and validation**
+   ## Model training and validation
 
 
-   Datasets**
+   ## Datasets
 
         * MNIST
         * CIFAR10
