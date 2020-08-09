@@ -8,6 +8,8 @@
    ## Model architectures
 
          * ResNet(18, 34)
+         * UNet
+         * DenseNet
 
    ## Model utilities
 
