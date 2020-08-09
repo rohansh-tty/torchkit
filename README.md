@@ -5,10 +5,10 @@
 
 torchkit currently supports the following features
 
-    Model architectures
-        ResNet(18, 34)
+    **Model architectures**
+         ResNet(18, 34)
         
-    Model utilities
+    **Model utilities**
         Loss functions
             Cross Entropy Loss
             Mean Square Error Loss
@@ -26,11 +26,11 @@ torchkit currently supports the following features
             One Cycle Policy
         LR Range Test
         Model Checkpointing
-    Model training and validation
-    Datasets 
+    **Model training and validation**
+    **Datasets**
         MNIST
         CIFAR10
         TinyImageNet
         Image Segmentation & Depth Estimation Dataset
-    GradCAM(Gradient-weighted Class Activation Map)
+    
    
