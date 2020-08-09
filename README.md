@@ -3,7 +3,7 @@
 ![](https://github.com/Gilf641/torchkit/blob/master/Assets/torchkit.png)
 
 
-torchkit currently supports the following features
+**torchkit** currently supports the following features
 
    Model architectures
 
