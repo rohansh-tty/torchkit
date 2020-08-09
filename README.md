@@ -5,50 +5,50 @@
 
 torchkit currently supports the following features
 
-Model architectures
-   
-      * ResNet(18, 34)
+   Model architectures
 
-Model utilities
+         * ResNet(18, 34)
 
-  Loss functions
-  
-      * Cross Entropy Loss
-      * Mean Square Error Loss
-      * SSIM and MS-SSIM Loss
-      * Dice Loss
+   Model utilities
 
-  Evaluation Metrics
-  
-      * Accuracy
-      * RMSE
-      * IoU
-  
-  Optimizers
-  
-      * Stochastic Gradient Descent
-      * Adam
-      
-      
-  LR Schedulers
-      
-      * Step LR
-      * Reduce LR on Plateau
-      * One Cycle Policy
-  
-  LR Range Test
-  
-  Model Checkpointing
+     Loss functions
+
+         * Cross Entropy Loss
+         * Mean Square Error Loss
+         * SSIM and MS-SSIM Loss
+         * Dice Loss
+
+     Evaluation Metrics
+
+         * Accuracy
+         * RMSE
+         * IoU
+
+     Optimizers
+
+         * Stochastic Gradient Descent
+         * Adam
 
 
-**Model training and validation**
+     LR Schedulers
+
+         * Step LR
+         * Reduce LR on Plateau
+         * One Cycle Policy
+
+     LR Range Test
+
+     Model Checkpointing
 
 
-**Datasets**
+   Model training and validation**
 
-     * MNIST
-     * CIFAR10
-     * TinyImageNet
-     * Image Segmentation & Depth Estimation Dataset
+
+   Datasets**
+
+        * MNIST
+        * CIFAR10
+        * TinyImageNet
+        * Image Segmentation & Depth Estimation Dataset
 
 
