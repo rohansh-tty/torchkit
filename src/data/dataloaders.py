@@ -31,6 +31,7 @@ class DataLoaders:
     return torch.utils.data.DataLoader(data,**self.dataLoader_args)
 
 
+
 def Data_To_Dataloader(trainset,testset,seed=1,batch_size=128,num_workers=4,pin_memory=True):
 	"""
 	Conv DataSet Obj to DataLoader

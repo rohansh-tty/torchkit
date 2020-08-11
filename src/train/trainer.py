@@ -1,6 +1,7 @@
 
 import time
 from tqdm import notebook
+import numpy as np
 class Trainer:
   def __init__(self, config):
     self.model = config.model
