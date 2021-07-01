@@ -2,8 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
-# import cifar_net, mnist_net
-from models import config, cifar_net, mnist_net
+
 
 
 from collections import OrderedDict

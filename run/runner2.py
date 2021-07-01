@@ -53,22 +53,22 @@ def test(model, config):
     count = 0
     with torch.no_grad():
         for data, target in config.testloader:
-            count += 1
-            data, target = data.to(config.device), target.to(config.device)
-            output = model(data)
-            # sum up batch loss
-            test_loss_value += F.nll_loss(output, target, reduction='sum').item()
-            # get the index of the max log-probability
-            pred = output.argmax(dim=1, keepdim=True)
-            correct += pred.eq(target.view_as(pred)).sum().item()
-            result = pred.eq(target.view_as(pred))
+          count += 1
+          data, target = data.to(config.device), target.to(config.device)
+          output = model(data)
+          # sum up batch loss
+          test_loss_value += F.nll_loss(output, target, reduction='sum').item()
+          # get the index of the max log-probability
+          pred = output.argmax(dim=1, keepdim=True)
+          correct += pred.eq(target.view_as(pred)).sum().item()
+          result = pred.eq(target.view_as(pred))
 
-    if config.misclassified:
-        if count >40  and count < 70:
-            for i in range(0, config.testloader.batch_size):
-                if not result[i]:
-                    test_misc_images.append({'pred': list(pred)[i], 'label': list(target.view_as(pred))[i], 'image': data[i]})
-        
+          if config.misclassified:
+            if count >40  and count < 70:
+                for i in range(0, config.testloader.batch_size):
+                    if not result[i]:
+                        test_misc_images.append({'pred': list(pred)[i], 'label': list(target.view_as(pred))[i], 'image': data[i]})
+            
 
     test_loss_value /= len(config.testloader.dataset)
 
@@ -82,39 +82,42 @@ def test(model, config):
 
 
 def run(model, config):
-    train_loss = []
-    test_loss = []
-    train_acc = []
-    test_acc = []
-    model_results = defaultdict()
-    misclassified=None
+  train_loss = []
+  test_loss = []
+  train_acc = []
+  test_acc = []
 
-    optimizer = getattr(torch.optim, config.optimizer)(model.parameters(), **config.optimizer_params[config.optimizer])
-    scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, 
+
+  model_results = defaultdict()
+
+  misclassified=None
+
+  optimizer = getattr(torch.optim, config.optimizer)(model.parameters(), **config.optimizer_params[config.optimizer])
+  scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, 
                                                 max_lr=0.2,
                                                 steps_per_epoch=len(config.trainloader),
                                                 epochs=config.EPOCHS) 
 
-    lr_list = []
+  lr_list = []
 
-    print('='*10+'RUNNING THE MODEL'+'='*10)
-    for epoch in range(config.EPOCHS):
-        print('EPOCH {} | LR {}: '.format(epoch+1, scheduler.get_last_lr()))
-        lr_list.append(scheduler.get_last_lr())
-        train_epoch_loss, train_epoch_acc = train(model, config, scheduler)
-        test_loss_val, test_acc_val, test_misc_images = test(model, config)
+  print('='*10+'RUNNING THE MODEL'+'='*10)
+  for epoch in range(config.EPOCHS):
+      print('EPOCH {} | LR {}: '.format(epoch+1, scheduler.get_last_lr()))
+      lr_list.append(scheduler.get_last_lr())
+      train_epoch_loss, train_epoch_acc = train(model, config, scheduler)
+      test_loss_val, test_acc_val, test_misc_images = test(model, config)
 
-        train_loss.append(sum(train_epoch_loss)/len(train_epoch_loss))
-        train_acc.append(sum(train_epoch_acc)/len(train_epoch_acc))
-        test_loss.append(test_loss_val)
-        test_acc.append(test_acc_val)
+      train_loss.append(sum(train_epoch_loss)/len(train_epoch_loss))
+      train_acc.append(sum(train_epoch_acc)/len(train_epoch_acc))
+      test_loss.append(test_loss_val)
+      test_acc.append(test_acc_val)
 
-    torch.save(model.state_dict(), f"{config.name}.pth")
-    misclassified = test_misc_images
-    model_results['TrainLoss'] = train_loss
-    model_results['TestLoss'] = test_loss
-    model_results['TrainAcc'] = train_acc
-    model_results['TestAcc'] = test_acc
-    model_results['LR'] = lr_list
+  torch.save(model.state_dict(), f"{config.name}.pth")
+  misclassified = test_misc_images
+  model_results['TrainLoss'] = train_loss
+  model_results['TestLoss'] = test_loss
+  model_results['TrainAcc'] = train_acc
+  model_results['TestAcc'] = test_acc
+  model_results['LR'] = lr_list
 
-    return model_results, test_misc_images
+  return model_results, test_misc_images
