@@ -1,57 +1,77 @@
 # torchkit
 
-![](https://github.com/Gilf641/torchkit/blob/master/Assets/torchkit.png)
+![](https://github.com/Gilf641/EVA-6/blob/master/torchkit/torchkit.png)
+
+PyTorch Utility Package to setup training and testing pipeline for Computer Vision Tasks
+
+## File Structure
+
+![](https://github.com/Gilf641/EVA-6/blob/master/torchkit/treestructure.png)
+
+Package has 5 sub-packages
+
+### 1. data
+Consists of Dataset, Dataloader functions and classes
+
+### 2. models 
+Has two different network files, based on CIFAR-10 and MNIST
+
+### 3. run
+Consists of Train and Testing part of NeuralNet
+
+### 4. torchsummary
+Mainly modelsummary with Receptive Field calculated layer-wise
+
+### 5. utils
+Consists of DataUtils and ModelUtils, which has helper functions mainly to plot and visualize data in former, & latter has model related functions.
 
 
-**torchkit** currently supports the following features
+## Features
 
-   ## Model architectures
+#### Convolutions
+    * Depthwise
+    * Dilated 
 
-         * ResNet(18, 34)
-         * UNet
-         * DenseNet
-
-   ## Model utilities
-
-     Loss functions
-
-         * Cross Entropy Loss
-         * Mean Square Error Loss
-         * SSIM and MS-SSIM Loss
-         * Dice Loss
-
-     Evaluation Metrics
-
-         * Accuracy
-         * RMSE
-         * IoU
-
-     Optimizers
-
-         * Stochastic Gradient Descent
-         * Adam
+#### Normalization
+    * BatchNorm
+    * GroupNorm
+    * LayerNorm
 
 
-     LR Schedulers
+#### Model Summary
 
-         * Step LR
-         * Reduce LR on Plateau
-         * One Cycle Policy
+    * with layer-wise Receptive Field
 
-     LR Range Test
+#### Model utilities
 
-     Model Checkpointing
+    Loss functions
+
+        * Cross Entropy Loss
+        * NLLoss
+
+    Evaluation Metrics
+
+        * Accuracy
+
+    Optimizers
+
+        * Stochastic Gradient Descent
+
+    LR Schedulers
+
+        * Step LR
+        * Reduce LR on Plateau
+        * One Cycle Policy
 
 
-   ## Model training and validation
-        
+
+    
 
 
-   ## Datasets
+#### Datasets
 
-        * MNIST
-        * CIFAR10
-        * TinyImageNet
-        * Image Segmentation & Depth Estimation Dataset
+    * MNIST
+    * CIFAR10
+  
 
 
